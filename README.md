@@ -8,7 +8,10 @@
 
 ### Assignment
 
-Create your own realisation of Queue with 2 Stacks
+1. Create your own realisation of Queue with 2 Stacks
+
+2. Realize class LinkedList with possibilities to add, remove and find element and function to check is there a loop in Linked list (for checking list fir a loop please use Floyd algorithm)
+3. (optional) Develop realisation of black-red tree, it should have next functions: add element to the tree, remove element from a tree, find element on a tree, get max and min depth in a tree
 
 ## Getting Started
 
@@ -53,7 +56,13 @@ npm t
    npm run test:stack
   ```
 
-- Test Stack:
+- Test Queue (With 2 stacks):
+
   ```
    npm run test:queue
+  ```
+
+- Test LinkedList:
+  ```
+   npm run test:linkedlist
   ```
