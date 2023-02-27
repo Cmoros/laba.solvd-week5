@@ -1,5 +1,5 @@
 import BinarySearchTree from "./BinarySearchTree";
-import { ColorTreeNode } from "./Node";
+import { ColorTreeNode } from "../Node";
 
 // Not finished
 export class RedBlackTree<T> extends BinarySearchTree<T> {

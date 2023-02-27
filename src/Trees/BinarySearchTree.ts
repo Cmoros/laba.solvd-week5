@@ -1,7 +1,6 @@
-import { haveBothChildren, TreeNode } from "./Node";
+import { haveBothChildren, TreeNode } from "../Node";
 import Tree from "./Tree";
 
-// Not finished nor tested
 export default class BinarySearchTree<T> implements Tree<T> {
   protected _root: TreeNode<T> | null = null;
 
@@ -37,7 +36,7 @@ export default class BinarySearchTree<T> implements Tree<T> {
   protected _remove(node: TreeNode<T> | null, value: T): TreeNode<T> | null {
     if (!node) return null;
     if (node.value === value) return node;
-    if (node.value > value) {
+    if (value > node.value) {
       const newNode = this._remove(node.right, value);
       if (newNode && newNode === node.right) {
         if (!haveBothChildren(newNode)) {
@@ -107,11 +106,21 @@ export default class BinarySearchTree<T> implements Tree<T> {
     return this._search(this._root, value)?.value ?? null;
   }
 
-  getMaxDepth() {
-    return 0;
+  private _inOrder(
+    node: TreeNode<T> | null,
+    cb: (left: number, right: number) => number
+  ): number {
+    if (!node) return 0;
+    const left = this._inOrder(node.left, cb);
+    const right = this._inOrder(node.right, cb);
+    return cb(left, right) + 1;
   }
 
-  getMinDepth() {
-    return 0;
+  getMaxDepth(): number {
+    return this._inOrder(this._root, Math.max);
+  }
+
+  getMinDepth(): number {
+    return this._inOrder(this._root, Math.min);
   }
 }
